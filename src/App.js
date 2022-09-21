@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
+import uuid from "react-uuid";
 
 function App() {
 
@@ -10,9 +11,9 @@ function App() {
   const onAddNote =()=> {
     console.log("clicked");
     const newNote = {
-      id: 1,
-      title: "this is the title of note. topics yeah!",
-      content: "this is the content of note. here iwe go.",
+      id: uuid(),
+      title: "This is the title of note. Topics yeah!",
+      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repellat, eligendi dolore adipisci ratione voluptatibus sint blanditiis? Consectetur fugiat vitae, sunt dolorem corrupti assumenda nihil hic? Quibusdam aliquid voluptatibus sunt blanditiis, veniam quidem laudantium molestiae nemo fugit natus voluptatem rem officiis quam doloribus obcaecati doloremque.",
       color: "green",
       modDate: Date.now(),
     };
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar onAddNote={onAddNote} />
+      <Sidebar onAddNote={onAddNote} notes={notes} />
       <Main />
     </div>
   );

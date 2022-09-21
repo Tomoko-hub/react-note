@@ -35,10 +35,30 @@ button {
     transition: all 0.3s;
 }
 
-.sidebar-notetitle {
+.sidebar-noteTitle {
     display: flex;
     justify-content: space-between;
 }
+
+.colorBoxContainer {
+    margin: 5px;
+}
+
+.colorBoxContainer .choseColor {
+    padding: 5px;
+}
+
+input {
+    border: none;
+    background-color: lightyellow;
+    width: 13%;
+    margin: 5px;
+}
+
+input:hover {
+    background-color: #f1f0f0; 
+}
+
 
 .app-sidebar-note p {
     margin: 10px;

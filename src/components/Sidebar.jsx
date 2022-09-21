@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Main.css";
 
-const Sidebar = ({onAddNote}) => {
+const Sidebar = ({onAddNote, notes}) => {
   return (
     <div className='app-sidebar'>
         <div className="app-sidebar-header">
@@ -9,14 +9,27 @@ const Sidebar = ({onAddNote}) => {
             <button onClick={onAddNote}>Add</button>
         </div>
         <div className="app-sidebar-notes">
-            <div className="app-sidebar-note">
-                <div className="sidebar-notetitle">
-                    <strong>Title</strong>
-                    <button>Delete</button>
+            {notes.map((note) => (
+                <div className="app-sidebar-note" key={note.id}>
+                    <div className="sidebar-noteTitle">
+                        <strong>{note.title}</strong>
+                        <button>Delete</button>
+                    </div>
+                    <div className="colorBoxContainer">
+                        <form clasName="choseColor" action="/action_page.php">
+                            <label htmlFor="favcolor">Select your favorite color:{note.color}</label>
+                            <input type="color" id="favcolor" name="favcolor" value="#0b6623" />
+                        </form>
+                    </div>
+                    <p>{note.content}</p>
+                    <small>{new Date(note.modDate).toLocaleDateString("fi-FI", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })}</small>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repellat, eligendi dolore adipisci ratione voluptatibus sint blanditiis? Consectetur fugiat vitae, sunt dolorem corrupti assumenda nihil hic? Quibusdam aliquid voluptatibus sunt blanditiis, veniam quidem laudantium molestiae nemo fugit natus voluptatem rem officiis quam doloribus obcaecati doloremque.</p>
-                <small>Last edited:dd/mm/yy</small>
-            </div>
+            ))}
+
+            
         </div>
     </div>
   )
