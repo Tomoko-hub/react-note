@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Main.css";
 
-const Sidebar = ({onAddNote, notes}) => {
+const Sidebar = ({onAddNote, notes, onDeleteNote}) => {
   return (
     <div className='app-sidebar'>
         <div className="app-sidebar-header">
@@ -13,7 +13,7 @@ const Sidebar = ({onAddNote, notes}) => {
                 <div className="app-sidebar-note" key={note.id}>
                     <div className="sidebar-noteTitle">
                         <strong>{note.title}</strong>
-                        <button>Delete</button>
+                        <button onClick={()=>onDeleteNote(note.id)}>Delete</button>
                     </div>
                     <div className="colorBoxContainer">
                         <form clasName="choseColor" action="/action_page.php">
