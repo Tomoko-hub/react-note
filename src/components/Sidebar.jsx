@@ -17,15 +17,21 @@ const Sidebar = ({onAddNote, notes, onDeleteNote, activeNote, setActiveNote}) =>
                 >
                     <div className="sidebar-noteTitle">
                         <strong>{note.title}</strong>
-                        <button onClick={()=>onDeleteNote(note.id)}>Delete</button>
+                        <button 
+                            onClick={()=>onDeleteNote(note.id)}
+                        >
+                        Delete
+                        </button>
                     </div>
+                    {/*
                     <div className="colorBoxContainer">
-                        <form clasName="choseColor" action="/action_page.php">
+                        <form className="choseColor" action="/action_page.php">
                             <label htmlFor="favcolor">Select your favorite color:{note.color}</label>
                             <input type="color" id="favcolor" name="favcolor" value="#0b6623" />
                         </form>
                     </div>
-                    <p>{note.content}</p>
+                    */}
+                    {note.content}
                     <small>{new Date(note.modDate).toLocaleDateString("fi-FI", {
                         hour: "2-digit",
                         minute: "2-digit",
