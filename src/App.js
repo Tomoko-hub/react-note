@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
@@ -6,15 +6,23 @@ import uuid from "react-uuid";
 
 function App() {
 
-  const [ notes, setNotes ] = useState([]);
+  const [ notes, setNotes ] = useState(JSON.parse(localStorage.getItem("notes") || []));
   const [ activeNote, setActiveNote ] = useState([false]);
+
+  useEffect(()=> {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  useEffect(()=> {
+    setActiveNote(notes[0].id);
+  }, []);
 
   const onAddNote =()=> {
     console.log("clicked");
     const newNote = {
       id: uuid(),
-      title: "This is the title of note. Topics yeah!",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repellat, eligendi dolore adipisci ratione voluptatibus sint blanditiis? Consectetur fugiat vitae, sunt dolorem corrupti assumenda nihil hic? Quibusdam aliquid voluptatibus sunt blanditiis, veniam quidem laudantium molestiae nemo fugit natus voluptatem rem officiis quam doloribus obcaecati doloremque.",
+      title: "Title",
+      content: "Note",
       color: "green",
       modDate: Date.now(),
     };
